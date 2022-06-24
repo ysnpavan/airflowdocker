@@ -67,3 +67,6 @@ RUN chmod -R a+rx ${AIRFLOW_USER_HOME}/entrypoint.sh
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
 RUN pip install --user -r requirements.txt
+
+ENTRYPOINT [ "./entrypoint.sh" ]
+CMD [ "webserver" ]

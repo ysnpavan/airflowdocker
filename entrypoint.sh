@@ -47,15 +47,15 @@ wait_for_port() {
 }
 
 
-create_airflow_user() {
-  airflow users create \
-  --username "$AF_USER_NAME" \
-  --firstname "$AF_USER_FIRST_NAME" \
-  --lastname "$AF_USER_LAST_NAME" \
-  --role "$AF_USER_ROLE" \
-  --email "$AF_USER_EMAIL" \
-  --password "$AF_USER_PASSWORD"
-}
+# create_airflow_user() {
+#   airflow users create \
+#   --username "$AF_USER_NAME" \
+#   --firstname "$AF_USER_FIRST_NAME" \
+#   --lastname "$AF_USER_LAST_NAME" \
+#   --role "$AF_USER_ROLE" \
+#   --email "$AF_USER_EMAIL" \
+#   --password "$AF_USER_PASSWORD"
+# }
 # setup_airflow_variables() {
 #     if [ -e "variables.json" ]; then
 #       echo "Start importing Airflow variables"
@@ -85,23 +85,17 @@ case "$1" in
     webserver)
         airflow db init
         sleep 10
-        create_airflow_user
-        setup_airflow_variables
-        setup_airflow_connections
-        exec airflow scheduler &
         exec airflow webserver
+        ;;
+     scheduler)
+        airflow db init
+        sleep 10
+        exec airflow scheduler
         ;;
     worker)
         airflow db init
         sleep 10
-        exec airflow celery "$@" -q "$QUEUE_NAME"
         ;;
-    flower)
-        airflow db init
-        sleep 10
-        exec airflow celery "$@"
-        ;;
-    *)
         exec "$@"
         ;;
 esac
