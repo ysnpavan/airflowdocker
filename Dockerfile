@@ -59,6 +59,7 @@ RUN set -ex \
         /usr/share/doc \
         /usr/share/doc-base
 COPY requirements.txt ${AIRFLOW_USER_HOME}/requirements.txt
+COPY dags ${AIRFLOW_USER_HOME}/dags/
 COPY operators ${AIRFLOW_USER_HOME}/operators/
 COPY hooks ${AIRFLOW_USER_HOME}/hooks/
 COPY transformers ${AIRFLOW_USER_HOME}/transformers/
@@ -67,7 +68,7 @@ COPY sensors ${AIRFLOW_USER_HOME}/sensors/
 COPY config ${AIRFLOW_USER_HOME}/config/
 COPY entrypoint.sh ${AIRFLOW_USER_HOME}/entrypoint.sh
 RUN chmod -R a+rx ${AIRFLOW_USER_HOME}/entrypoint.sh
-COPY dags/ ${AIRFLOW_USER_HOME}/dags/
+
 
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
