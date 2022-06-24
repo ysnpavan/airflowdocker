@@ -67,7 +67,7 @@ COPY sensors ${AIRFLOW_USER_HOME}/sensors/
 COPY config ${AIRFLOW_USER_HOME}/config/
 COPY entrypoint.sh ${AIRFLOW_USER_HOME}/entrypoint.sh
 RUN chmod -R a+rx ${AIRFLOW_USER_HOME}/entrypoint.sh
-COPY dags/ ${AIRFLOW_USER_HOME}/dags
+COPY dags/ ${AIRFLOW_USER_HOME}/dags/
 
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
