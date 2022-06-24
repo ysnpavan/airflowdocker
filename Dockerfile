@@ -66,7 +66,6 @@ COPY hooks ${AIRFLOW_USER_HOME}/hooks/
 COPY transformers ${AIRFLOW_USER_HOME}/transformers/
 COPY utils ${AIRFLOW_USER_HOME}/utils/
 COPY sensors ${AIRFLOW_USER_HOME}/sensors/
-COPY config ${AIRFLOW_USER_HOME}/config/
 COPY entrypoint.sh ${AIRFLOW_USER_HOME}/entrypoint.sh
 RUN chmod -R a+rx ${AIRFLOW_USER_HOME}/entrypoint.sh
 
