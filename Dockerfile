@@ -58,6 +58,7 @@ RUN set -ex \
         /usr/share/man \
         /usr/share/doc \
         /usr/share/doc-base
+
 COPY requirements.txt ${AIRFLOW_USER_HOME}/requirements.txt
 COPY dags ${AIRFLOW_USER_HOME}/dags/
 COPY operators ${AIRFLOW_USER_HOME}/operators/
